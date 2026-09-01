@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROcmd | Professional Terminal Solutions</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #00d2ff;
+            --secondary: #3a7bd5;
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Animation */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+            z-index: -1;
+        }
+
+        .glow-sphere {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            filter: blur(150px);
+            opacity: 0.15;
+            border-radius: 50%;
+            animation: float 20s infinite alternate;
+        }
+
+        @keyframes float {
+            from { transform: translate(0, 0); }
+            to { transform: translate(100px, 100px); }
+        }
+
+        /* Header/Nav */
+        nav {
+            padding: 1.5rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        section { padding: 100px 10%; }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.4s;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 210, 255, 0.5);
+        }
+
+        /* Features Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+            text-align: left;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 { margin-bottom: 1rem; font-size: 1.5rem; }
+        .card p { color: var(--text-dim); font-size: 0.95rem; }
+
+        /* Terminal Preview Section */
+        .terminal-window {
+            background: #000;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 800px;
+            margin: 4rem auto;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 1px solid #334155;
+        }
+
+        .terminal-header {
+            background: #1e293b;
+            padding: 10px 15px;
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        .terminal-body {
+            padding: 20px;
+            font-family: 'Fira Code', monospace;
+            color: #d1d5db;
+            min-height: 200px;
+        }
+
+        .command { color: var(--primary); }
+        .cursor { animation: blink 1s infinite; }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { padding: 1.5rem 5%; }
+            section { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+    <div class="glow-sphere"></div>
+
+    <nav>
+        <div class="logo">PROcmd</div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#specs">Specs</a>
+            <a href="https://github.com/amir-93" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Master Your Terminal.</h1>
+        <p>A professional, modular, and high-performance terminal emulator optimized for Windows 7 systems.</p>
+        <div class="hero-btns">
+            <a href="#" class="btn btn-primary"><i class="fab fa-github"></i> Download v3.1</a>
+        </div>
+    </section>
+
+    <section id="features">
+        <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">Engineered for Power</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-layer-group"></i>
+                <h3>Modular Core</h3>
+                <p>Designed with a decoupled architecture. Easily extend the functionality with custom modules.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Auto-Elevation</h3>
+                <p>Smart privilege management. Automatically requests Administrator access when required.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-bolt"></i>
+                <h3>Non-Blocking UI</h3>
+                <p>High responsiveness. Commands run in dedicated threads, keeping your interface fluid.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-code"></i>
+                <h3>Batch Editor</h3>
+                <p>Write and debug your .bat scripts instantly with our built-in intelligent editor.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="preview">
+        <h2 style="text-align: center; font-size: 2.5rem;">The Experience</h2>
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <div class="terminal-body" id="terminal">
+                <div><span class="command">C:\Users\Admin></span> system_check --status</div>
+                <div style="color: #10b981;">[OK] Python 3.8 Detected</div>
+                <div style="color: #10b981;">[OK] Windows 7 (32-bit) Optimized</div>
+                <div style="color: #f59e0b;">[INFO] Requesting Administrator Privileges...</div>
+                <div><span class="command">C:\Users\Admin></span> <span class="cursor">_</span></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="specs" style="text-align: center;">
+        <h2 style="font-size: 2.5rem; margin-bottom: 2rem;">Technical Specifications</h2>
+        <div class="grid">
+            <div class="card" style="text-align: center;">
+                <h3>Runtime</h3>
+                <p>Python 3.8</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <h3>OS Target</h3>
+                <p>Windows 7 (x86)</p>
+            </div>
+            <div class="card" style="text-align: center;">
+                <h3>Architecture</h3>
+                <p>Modular / Multi-threaded</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 PROcmd by <strong>amir-93</strong>. All rights reserved.</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">Built with precision for power users.</p>
+    </footer>
+
+    <script>
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Subtle Terminal Animation
+        const terminal = document.getElementById('terminal');
+        const lines = [
+            "C:\\Users\\Admin> status_report",
+            "[OK] Core Modules Loaded",
+            "[OK] GUI Engine Initialized",
+            "C:\\Users\\Admin> _"
+        ];
+        
+        
+    </script>
+</body>
+</html>
