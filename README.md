@@ -37,8 +37,3 @@ Before running the application, ensure the following are installed:
 *Developed by amir-93 | Optimized for legacy Windows 7 systems.*
 -----------
 ============================================================
-ترمینال ماژولار PROcmd نسخه 3.1
-توسعه‌دهنده: amir-93
-هدف: ویندوز 7 (32 بیتی) | پایتون 3.8
-============================================================
-
