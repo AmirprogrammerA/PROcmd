@@ -1,3 +1,7 @@
+![Version](https://img.shields.io/badge/Version-3.1-blue)
+![OS](https://img.shields.io/badge/OS-Windows%207%20(32--bit)-orange)
+![Python](https://img.shields.io/badge/Python-3.8-green)
+
 # PROcmd v3.1
 **Professional Modular Terminal for Windows 7**
 
@@ -37,3 +41,45 @@ Before running the application, ensure the following are installed:
 *Developed by amir-93 | Optimized for legacy Windows 7 systems.*
 -----------
 ============================================================
+# PROcmd v3.1
+
+![Version](https://img.shields.io/badge/Version-3.1-blue)
+![OS](https://img.shields.io/badge/OS-Windows%207%20(32--bit)-orange)
+![Python](https://img.shields.io/badge/Python-3.8-green)
+
+Professional modular terminal emulator for Windows 7 (32-bit).
+
+---
+
+## 🇮🇷 Persian Documentation (مستندات فارسی)
+
+### معرفی
+پروژه **PROcmd** یک شبیه‌ساز ترمینال گرافیکی سبک است که به صورت اختصاصی برای محیط ویندوز 7 (32 بیتی) توسعه یافته است. این برنامه به عنوان یک رابط کاربری مدرن روی هسته `cmd.exe` عمل می‌کند و قابلیت‌های مدیریت دستورات را به شکلی بهینه ارائه می‌دهد.
+
+### ویژگی‌های کلیدی
+- **معماری ماژولار:** ساختار تمیز و قابل توسعه برای افزودن قابلیت‌های جدید.
+- **دسترسی خودکار ادمین:** درخواست خودکار سطح دسترسی مدیریت (UAC) در زمان اجرا.
+- **رابط کاربری غیرمسدود (Non-blocking):** اجرای دستورات در پس‌زمینه بدون هنگ کردن پنجره برنامه.
+- **ویرایشگر فایل‌های بچ:** ابزار داخلی برای مدیریت و ویرایش فایل‌های `.bat`.
+
+### پیش‌نیازها
+1. پایتون 3.8 (بهینه برای معماری 32 بیتی).
+2. فعال بودن گزینه **Add to PATH** در زمان نصب پایتون.
+3. سیستم عامل ویندوز 7 (32 بیتی).
+
+### راهنمای اجرا
+1. به پوشه پروژه بروید.
+2. روی فایل `PROcmd.cmd` دبل‌کلیک کنید.
+3. **نکته مهم:** برنامه به صورت خودکار دسترسی ادمین را درخواست می‌کند. در صورت باز شدن پنجره UAC ویندوز، حتماً گزینه **'Yes'** را انتخاب کنید.
+
+---
+
+## 📂 Project Structure (ساختار پروژه)
+```text
+PROcmd/
+├── PROcmd.cmd        # فایل بوت‌لودر برای اجرای سریع
+├── main.py           # هسته اصلی و مدیریت دسترسی‌های سیستمی
+├── terminal_core.py  # موتور اجرای دستورات (subprocess)
+├── ui_components.py  # لایه گرافیکی برنامه (Tkinter)
+├── editor.py         # بخش ویرایشگر فایل‌های بچ
+└── settings.py       # تنظیمات پیکربندی
