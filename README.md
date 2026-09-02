@@ -6,7 +6,7 @@
 **Professional Modular Terminal for Windows 7**
 
 > Developed by: **amir-93**
-
+Developed & Tested natively on Windows 7 32-bit hardware.”
 ---
 
 ## Introduction
